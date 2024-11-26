@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../widgets/custom_input_decoration.dart';
+
 class ForgotPassword extends StatefulWidget {
   const ForgotPassword({super.key});
 
@@ -68,7 +70,10 @@ class _LoginViewState extends State<ForgotPassword> {
                   style: const TextStyle(color: Colors.black),
                   keyboardType: TextInputType.emailAddress,
                   autovalidateMode: AutovalidateMode.onUserInteraction,
-                  decoration: _buildInputDecoration("Enter your email address", Icons.email),
+                  decoration: customInputDecoration(
+                    label: "Enter your email address",
+                    prefixIcon: Icons.email,
+                  ),
                 ),
                 const SizedBox(height: 10.0),
                 Align(
@@ -106,8 +111,8 @@ class _LoginViewState extends State<ForgotPassword> {
                     ),
                     child: isLoader
                         ? const Center(child: CircularProgressIndicator())
-                        : const Text("Login",
-                      style: TextStyle(color: Colors.white, fontSize: 25),
+                        : const Text("Submit",
+                      style: TextStyle(color: Colors.white, fontSize: 25 ,fontWeight: FontWeight.bold),
                     ),
                   ),
                 ),
@@ -118,22 +123,4 @@ class _LoginViewState extends State<ForgotPassword> {
     );
   }
 
-  InputDecoration _buildInputDecoration(String label, IconData prefixIcon) {
-    return InputDecoration(
-      fillColor: Colors.white,
-      enabledBorder: const OutlineInputBorder(
-          borderSide: BorderSide(color: Colors.black)), // Viền đen khi không focus
-      focusedBorder: const OutlineInputBorder(
-          borderSide: BorderSide(color: Colors.black)), // Viền đen khi focus
-      filled: true,
-      labelStyle: const TextStyle(color: Color(0xFF949494)), // Màu chữ nhãn
-      labelText: label,
-      prefixIcon: Icon(
-        prefixIcon,
-        color: const Color(0xFF949494),
-      ),
-      border: OutlineInputBorder(borderRadius: BorderRadius.circular(10.0)),
-      // Để màu chữ khi nhập vào là trắng, cần sử dụng `style` cho `TextField`
-    );
-  }
 }

@@ -14,11 +14,7 @@ class Splash extends StatelessWidget {
           height: 150,
           width: 300,
           errorBuilder: (context, error, stackTrace) {
-            return Image.asset(
-              "assets/img_err.png",
-              height: 150,
-              width: 300,
-            );
+            return Image.asset('assets/images/img_err.png', height: 150, width: 300);
           },
         ),
       ),

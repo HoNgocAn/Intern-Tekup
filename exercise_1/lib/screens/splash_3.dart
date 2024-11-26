@@ -40,11 +40,7 @@ class Splash3 extends StatelessWidget {
                   height: 300,
                   width: 400,
                   errorBuilder: (context, error, stackTrace) {
-                    return Image.asset(
-                      "assets/img_err.png",
-                      height: 300,
-                      width: 400,
-                    );
+                    return Image.asset('assets/images/img_err.png', height: 300, width: 400);
                   },
                 ),
                 const Text(
