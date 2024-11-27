@@ -1,11 +1,13 @@
-import 'package:exercise_1/screens/forgot_password.dart';
-import 'package:exercise_1/screens/login.dart';
-import 'package:exercise_1/screens/sign_up.dart';
-import 'package:exercise_1/screens/splash.dart';
-import 'package:exercise_1/screens/splash_1.dart';
-import 'package:exercise_1/screens/splash_2.dart';
-import 'package:exercise_1/screens/splash_3.dart';
+
+import 'package:exercise_1/screens/auth/forgot_password.dart';
+import 'package:exercise_1/screens/auth/login.dart';
+import 'package:exercise_1/screens/auth/sign_up.dart';
+import 'package:exercise_1/screens/home/get_started.dart';
+import 'package:exercise_1/screens/home/main_screen.dart';
+import 'package:exercise_1/screens/onboarding/splash.dart';
+import 'package:exercise_1/screens/onboarding/unifield_splash.dart';
 import 'package:flutter/material.dart';
+
 
 void main() {
   runApp(const MyApp());
@@ -14,15 +16,22 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
-      home: LoginView()
+      initialRoute: '/mainScreen',
+      routes: {
+        // '/': (context) => const Splash(),
+        '/unifiedSplash': (context) => const UnifiedSplashScreen(),
+        '/login': (context) => const LoginView(),
+        '/signUp': (context) => const SignUp(),
+        '/forgotPassword': (context) => const ForgotPassword(),
+        '/getStarted': (context) => const GetStarted(),
+        '/mainScreen': (context) => const AppMainScreen(),
+      },
     );
   }
 }
-
 

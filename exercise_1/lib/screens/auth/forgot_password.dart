@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 
-import '../widgets/custom_input_decoration.dart';
+import '../../widgets/button_auth.dart';
+import '../../widgets/custom_input_decoration.dart';
 
 class ForgotPassword extends StatefulWidget {
   const ForgotPassword({super.key});
 
   @override
-  State<ForgotPassword> createState() => _LoginViewState();
+  State<ForgotPassword> createState() => _ForgotPassword();
 }
 
-class _LoginViewState extends State<ForgotPassword> {
+class _ForgotPassword extends State<ForgotPassword> {
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
@@ -34,13 +35,11 @@ class _LoginViewState extends State<ForgotPassword> {
         );
       } finally {
         setState(() {
-          isLoader = false; // Ẩn loader sau khi hoàn tất
+          isLoader = false;
         });
       }
     }
   }
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -77,14 +76,14 @@ class _LoginViewState extends State<ForgotPassword> {
                 ),
                 const SizedBox(height: 10.0),
                 Align(
-                  alignment: Alignment.centerLeft, // Căn trái
+                  alignment: Alignment.centerLeft,
                   child: RichText(
                     text: const TextSpan(
-                      style: TextStyle(color: Colors.grey), // Màu chữ mặc định
+                      style: TextStyle(color: Colors.grey),
                       children: <TextSpan>[
                         TextSpan(
-                          text: ' * ', // Dấu * màu đỏ
-                          style: TextStyle(color: Colors.red), // Màu đỏ cho dấu *
+                          text: ' * ',
+                          style: TextStyle(color: Colors.red),
                         ),
                         TextSpan(
                           text: 'We will send you a message to set or reset or new password',
@@ -94,27 +93,10 @@ class _LoginViewState extends State<ForgotPassword> {
                   ),
                 ),
                 const SizedBox(height: 40.0),
-                SizedBox(
-                  height: 50,
-                  width: double.infinity,
-                  child: ElevatedButton(
-                    onPressed: isLoader ? null : () {
-                      _submitForm();
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.pink, // Màu nền của nút
-                      foregroundColor: Colors.white, // Màu chữ (foreground)
-                      textStyle: const TextStyle(fontSize: 18),
-                      shape: const RoundedRectangleBorder(
-                        borderRadius: BorderRadius.zero, // Không bo tròn
-                      ),// Kích thước chữ
-                    ),
-                    child: isLoader
-                        ? const Center(child: CircularProgressIndicator())
-                        : const Text("Submit",
-                      style: TextStyle(color: Colors.white, fontSize: 25 ,fontWeight: FontWeight.bold),
-                    ),
-                  ),
+                ButtonAuth(
+                  isLoader: isLoader,
+                  onPressed: _submitForm,
+                  buttonText: "Submit",
                 ),
                 const SizedBox(height: 20.0),
               ],
